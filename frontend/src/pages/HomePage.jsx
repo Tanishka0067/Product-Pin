@@ -135,6 +135,8 @@ function HomePage() {
                 "Icons",
                 "Courses",
                 "Designs",
+                "MarketPlace",
+                "Products",
               ].map((cat) => (
                 <span
                   key={cat}
