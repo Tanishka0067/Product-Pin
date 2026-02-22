@@ -1,4 +1,11 @@
-import { ArrowLeftIcon, ImageIcon, TypeIcon, FileTextIcon, SaveIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  ImageIcon,
+  TypeIcon,
+  FileTextIcon,
+  SaveIcon,
+  Link2Icon,
+} from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 
@@ -7,6 +14,7 @@ function EditProductForm({ product, isPending, isError, onSubmit }) {
     title: product.title,
     description: product.description,
     imageUrl: product.imageUrl,
+    link: product.link,
   });
 
   return (
@@ -36,7 +44,9 @@ function EditProductForm({ product, isPending, isError, onSubmit }) {
                 placeholder="Product title"
                 className="grow"
                 value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, title: e.target.value })
+                }
                 required
               />
             </label>
@@ -48,11 +58,25 @@ function EditProductForm({ product, isPending, isError, onSubmit }) {
                 placeholder="Image URL"
                 className="grow"
                 value={formData.imageUrl}
-                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, imageUrl: e.target.value })
+                }
                 required
               />
             </label>
-
+            <label className="input input-bordered flex items-center gap-2 bg-base-200">
+              <Link2Icon className="size-4 text-base-content/50" />
+              <input
+                type="url"
+                placeholder="Product URL"
+                className="grow"
+                value={formData.link}
+                onChange={(e) =>
+                  setFormData({ ...formData, link: e.target.value })
+                }
+                required
+              />
+            </label>
             {formData.imageUrl && (
               <div className="rounded-box overflow-hidden">
                 <img
@@ -71,7 +95,9 @@ function EditProductForm({ product, isPending, isError, onSubmit }) {
                   placeholder="Description"
                   className="grow bg-transparent resize-none focus:outline-none min-h-24"
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                   required
                 />
               </div>
@@ -83,8 +109,16 @@ function EditProductForm({ product, isPending, isError, onSubmit }) {
               </div>
             )}
 
-            <button type="submit" className="btn btn-primary w-full" disabled={isPending}>
-              {isPending ? <span className="loading loading-spinner" /> : "Save Changes"}
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={isPending}
+            >
+              {isPending ? (
+                <span className="loading loading-spinner" />
+              ) : (
+                "Save Changes"
+              )}
             </button>
           </form>
         </div>

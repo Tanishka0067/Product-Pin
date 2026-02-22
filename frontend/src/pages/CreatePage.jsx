@@ -1,12 +1,24 @@
 import { Link, useNavigate } from "react-router";
 import { useCreateProduct } from "../hooks/useProducts";
 import { useState } from "react";
-import { ArrowLeftIcon, FileTextIcon, ImageIcon, SparklesIcon, TypeIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  FileTextIcon,
+  ImageIcon,
+  Link2Icon,
+  SparklesIcon,
+  TypeIcon,
+} from "lucide-react";
 
 function CreatePage() {
   const navigate = useNavigate();
   const createProduct = useCreateProduct();
-  const [formData, setFormData] = useState({ title: "", description: "", imageUrl: "" });
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    imageUrl: "",
+    link: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +49,9 @@ function CreatePage() {
                 placeholder="Product title"
                 className="grow"
                 value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, title: e.target.value })
+                }
                 required
               />
             </label>
@@ -50,11 +64,25 @@ function CreatePage() {
                 placeholder="Image URL"
                 className="grow"
                 value={formData.imageUrl}
-                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, imageUrl: e.target.value })
+                }
                 required
               />
             </label>
-
+            {/* product link */}
+            <label className="input input-bordered flex items-center gap-2 bg-base-200">
+              <Link2Icon className="size-4 text-base-content/50" />
+              <input
+                type="url"
+                placeholder="Product URL"
+                className="grow"
+                value={formData.link}
+                onChange={(e) =>
+                  setFormData({ ...formData, link: e.target.value })
+                }
+              />
+            </label>
             {/* IMG PREVIEW */}
             {formData.imageUrl && (
               <div className="rounded-box overflow-hidden">
@@ -74,7 +102,9 @@ function CreatePage() {
                   placeholder="Description"
                   className="grow bg-transparent resize-none focus:outline-none min-h-24"
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                   required
                 />
               </div>

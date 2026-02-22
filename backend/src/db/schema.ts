@@ -13,6 +13,7 @@ export const products=pgTable("products",{
     id:uuid("id").primaryKey().defaultRandom().unique(),
     title:text("title").notNull(),
     description:text("description").notNull(),
+    link:text("link"),
     imageUrl:text("image_url").notNull(),
     userId:text("user_id").notNull().references(()=>users.id,{onDelete:"cascade"}),
     createdAt:timestamp("created_at",{mode:"date"}).defaultNow().notNull(),

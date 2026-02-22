@@ -45,7 +45,7 @@ export const createProduct = async (req: Request, res: Response) => {
     const { userId } = getAuth(req);
     if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-    const { title, description, imageUrl } = req.body;
+    const { title, description, imageUrl,link } = req.body;
 
     if (!title || !description || !imageUrl) {
       res.status(400).json({ error: "Title, description, and imageUrl are required" });
@@ -57,6 +57,7 @@ export const createProduct = async (req: Request, res: Response) => {
       description,
       imageUrl,
       userId,
+      link,
     });
 
     res.status(201).json(product);
