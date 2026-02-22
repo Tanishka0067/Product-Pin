@@ -143,4 +143,3 @@ Full-Stack Developer (React | Node.js | TypeScript)
 ---
 
 ⭐ If you found this project interesting, feel free to star the repository!
-```
